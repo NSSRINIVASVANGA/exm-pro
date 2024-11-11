@@ -1,23 +1,22 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
 const port = 3000;
 
 // MongoDB Atlas connection URI - replace <username>, <password>, and <dbname> with your MongoDB credentials.
-const mongoURI = 'mongodb+srv://vanganataraj787:sC40DzgcZylet3aB@ex-pro.3x3dv.mongodb.net/?retryWrites=true&w=majority&appName=ex-pro';
+const mongoURI = 'mongodb+srv://vanganataraj787:vanga5355@ex-pro.3x3dv.mongodb.net/';
 
 // MongoDB connection
-mongoose.connect(mongoURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(() => {
+mongoose.connect(mongoURI).then(() => {
     console.log("Connected to MongoDB Atlas");
 }).catch((error) => {
     console.error("MongoDB connection error:", error);
 });
 
 // Middleware to parse JSON data
+app.use(cors());
 app.use(express.json());
 
 // Define a Mongoose schema and model
